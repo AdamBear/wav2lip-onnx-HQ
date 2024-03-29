@@ -276,6 +276,7 @@ def main():
 
 #  crop first frame:
 			if l == 0:
+				h, w = frame.shape[:-1]
 				roi = (0, 0, w, h)
 				# h, w = frame.shape[:-1]
 				# roi = cv2.selectROI("Select region of target face", frame, showCrosshair=False)
