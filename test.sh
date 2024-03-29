@@ -1,1 +1,1 @@
-python inference_onnxModel.py --checkpoint_path ./checkpoints --face ./test.mp4 --audio ./temp.wav --enhancer gfpgan
+python inference_onnxModel.py --checkpoint_path ./checkpoints/wav2lip.onnx --face ./test.mp4 --audio ./temp.wav --enhancer gpen
