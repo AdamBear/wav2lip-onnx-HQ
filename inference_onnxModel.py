@@ -502,9 +502,9 @@ def main():
 
 	if args.final_audio:
 		if args.hq_output:	
-			command = 'ffmpeg.exe -y -i ' + '"' + args.final_audio + '"' + ' -r ' + str(fps) + ' -f image2 -i ' + '"' + './hq_temp/' + '%07d.png' + '"' + ' -shortest -vcodec libx264 -pix_fmt yuv420p -preset slow -acodec libmp3lame -ac 2 -ar 44100 -ab 128000 -strict -2 -q:v 1 ' + '"' + args.outfile + '"'						
+			command = 'ffmpeg -y -i ' + '"' + args.final_audio + '"' + ' -r ' + str(fps) + ' -f image2 -i ' + '"' + './hq_temp/' + '%07d.png' + '"' + ' -shortest -vcodec libx264 -pix_fmt yuv420p -preset slow -acodec libmp3lame -ac 2 -ar 44100 -ab 128000 -strict -2 -q:v 1 ' + '"' + args.outfile + '"'
 		else:
-			command = 'ffmpeg.exe -y -i ' + '"' + args.final_audio + '"' + ' -i ' + 'temp/temp.mp4' + ' -shortest -vcodec copy -acodec libmp3lame -ac 2 -ar 44100 -ab 128000 -strict -2 -q:v 1 ' + '"' + args.outfile + '"'
+			command = 'ffmpeg -y -i ' + '"' + args.final_audio + '"' + ' -i ' + 'temp/temp.mp4' + ' -shortest -vcodec copy -acodec libmp3lame -ac 2 -ar 44100 -ab 128000 -strict -2 -q:v 1 ' + '"' + args.outfile + '"'
 		subprocess.call(command, shell=platform.system() != 'Windows')
 		
 		if os.path.exists('temp/temp.mp4'):
@@ -513,9 +513,9 @@ def main():
 			shutil.rmtree('hq_temp')		
 	else:
 		if args.hq_output:
-		  command = 'ffmpeg.exe -y -i ' + '"' + args.audio + '"' + ' -r ' + str(fps) + ' -f image2 -i ' + '"' + './hq_temp/' + '%07d.png' + '"' + ' -shortest -vcodec libx264 -pix_fmt yuv420p -preset slow -acodec libmp3lame -ac 2 -ar 44100 -ab 128000 -strict -2 -q:v 1 ' + '"' + args.outfile + '"'						
+		  command = 'ffmpeg -y -i ' + '"' + args.audio + '"' + ' -r ' + str(fps) + ' -f image2 -i ' + '"' + './hq_temp/' + '%07d.png' + '"' + ' -shortest -vcodec libx264 -pix_fmt yuv420p -preset slow -acodec libmp3lame -ac 2 -ar 44100 -ab 128000 -strict -2 -q:v 1 ' + '"' + args.outfile + '"'
 		else:						
-			command = 'ffmpeg.exe -y -i ' + '"' + args.audio + '"' + ' -i ' + 'temp/temp.mp4' + ' -shortest -vcodec copy -acodec libmp3lame -ac 2 -ar 44100 -ab 128000 -strict -2 -q:v 1 ' + '"' + args.outfile + '"'
+			command = 'ffmpeg -y -i ' + '"' + args.audio + '"' + ' -i ' + 'temp/temp.mp4' + ' -shortest -vcodec copy -acodec libmp3lame -ac 2 -ar 44100 -ab 128000 -strict -2 -q:v 1 ' + '"' + args.outfile + '"'
 
 		subprocess.call(command, shell=platform.system() != 'Windows')
 		
