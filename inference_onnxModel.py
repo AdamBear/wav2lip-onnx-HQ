@@ -276,11 +276,12 @@ def main():
 
 #  crop first frame:
 			if l == 0:
-				h, w = frame.shape[:-1]
-				roi = cv2.selectROI("Select region of target face", frame, showCrosshair=False)
-				if roi == (0,0,0,0):roi = (0,0,w,h)
-				cropped_roi = frame[int(roi[1]):int(roi[1]+roi[3]), int(roi[0]):int(roi[0]+roi[2])]
-				cv2.destroyAllWindows()
+				roi = (0, 0, w, h)
+				# h, w = frame.shape[:-1]
+				# roi = cv2.selectROI("Select region of target face", frame, showCrosshair=False)
+				# if roi == (0,0,0,0):roi = (0,0,w,h)
+				# cropped_roi = frame[int(roi[1]):int(roi[1]+roi[3]), int(roi[0]):int(roi[0]+roi[2])]
+				# cv2.destroyAllWindows()
 
 #     crop all frames:
 			cropped_roi = frame[int(roi[1]):int(roi[1]+roi[3]), int(roi[0]):int(roi[0]+roi[2])]
@@ -361,7 +362,7 @@ def main():
 
 	
 	for i, (img_batch, mel_batch, frames) in enumerate(tqdm(gen, total=int(np.ceil(float(len(mel_chunks)))))):
-					
+
 		f_len = len(full_frames)
 		if fc == (len(full_frames)):
 			fc = 0
