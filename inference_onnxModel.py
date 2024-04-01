@@ -153,7 +153,7 @@ def face_detect(images):
 				sub_face = crop_face[65-(padY):241-(padY),62:194]
 				sub_face = cv2.resize(sub_face, (96,96))
 				M = np.float32([[1,2,3],[1,2,3]])
-								
+
 			sub_faces.append(sub_face)		
 			crop_faces.append(crop_face)
 			matrix.append(M)
@@ -231,11 +231,12 @@ def main():
 
 #  crop image:
 		h, w = orig_frame.shape[:-1]
-		roi = cv2.selectROI("Select region of target face", orig_frame, showCrosshair=False)
-		if roi == (0,0,0,0):roi = (0,0,w,h)
-		cropped_roi = orig_frame[int(roi[1]):int(roi[1]+roi[3]), int(roi[0]):int(roi[0]+roi[2])]
-		cv2.destroyAllWindows()
-		full_frames = [cropped_roi]
+		roi = (0, 0, w, h)
+		# roi = cv2.selectROI("Select region of target face", orig_frame, showCrosshair=False)
+		# if roi == (0,0,0,0):roi = (0,0,w,h)
+		# cropped_roi = orig_frame[int(roi[1]):int(roi[1]+roi[3]), int(roi[0]):int(roi[0]+roi[2])]
+		# cv2.destroyAllWindows()
+		# full_frames = [cropped_roi]
 				
 	else:
 		video_stream = cv2.VideoCapture(args.face)
@@ -248,7 +249,7 @@ def main():
 
 		if args.cut_out == 0:
 			args.cut_out = int(video_stream.get(cv2.CAP_PROP_FRAME_COUNT))
-			
+
 		duration = int(video_stream.get(cv2.CAP_PROP_FRAME_COUNT)) - args.cut_in
 		new_duration = args.cut_out - args.cut_in
 		
