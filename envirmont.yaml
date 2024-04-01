@@ -86,4 +86,3 @@ dependencies:
       - typing-extensions==4.10.0
       - urllib3==2.2.1
       - wcwidth==0.2.13
-prefix: /root/miniconda3/envs/w2l_onnx
